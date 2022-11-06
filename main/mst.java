@@ -8,6 +8,9 @@ package main;
 class DijkstrasAlgorithm {
 
 	public static final int NO_PARENT = -1;
+	public static int start;
+	public static int[] shorter;
+	public static int[] mothers;
 
 	// Function that implements Dijkstra's
 	// single source shortest path
@@ -98,8 +101,11 @@ class DijkstrasAlgorithm {
 				}
 			}
 		}
-
-		printSolution(startVertex, shortestDistances, parents);
+		start = startVertex;
+		shorter = shortestDistances;
+		mothers = parents;
+		//printSolution(start, shorter, mothers);
+		//printSolution(startVertex, shortestDistances, parents);
 	}
 
 	// A utility function to print

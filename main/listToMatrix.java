@@ -1,6 +1,7 @@
 package main;
 import java.util.Arrays;
-
+import java.util.InputMismatchException;
+import java.util.Scanner;
 import main.DijkstrasAlgorithm;
 
 class listToMatrix {
@@ -218,6 +219,50 @@ class listToMatrix {
         };
         //System.out.println(Arrays.deepToString(adjListToMatrix(115, adjList)).replace("],", "],\n"));
         int[][] adjacencyMatrix = adjListToMatrix(115, adjList);
-        DijkstrasAlgorithm.dijkstra(adjacencyMatrix, 1);
+
+
+        //Scanner scanner = new Scanner(System.in);
+        int input1 = -1;
+        int input2 = -1;
+        boolean flag = true;
+        //System.out.println("Enter a starting node: ");
+        do {
+            try {
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Enter a starting node: ");
+                input1 = scanner.nextInt();
+                if (input1 < 1 || input1 > 114) {
+                    throw new IllegalArgumentException();
+                }
+                System.out.println("Enter an ending node: ");
+                input2 = scanner.nextInt();
+                if (input2 < 1 || input2 > 114) {
+                    throw new IllegalArgumentException();
+                }
+                if (input2 == input1) {
+                    throw new RuntimeException();
+                }
+                scanner.close();
+                flag=false;
+            }
+            catch(InputMismatchException e) {
+                // Accept integers only.
+                System.out.println("Please enter an integer value only.");
+                flag = true;
+            } catch (IllegalArgumentException e2) {
+                System.out.println("Please enter an integer in the range 1 - 114.");
+                flag = true;
+            } catch (RuntimeException e3) {
+                System.out.println("Please enter unique values for starting and ending nodes.");
+                flag = true;
+            }
+        }
+        while(flag);
+
+        DijkstrasAlgorithm.dijkstra(adjacencyMatrix, input1);
+
+        System.out.println("\n*** Solution ***");
+        DijkstrasAlgorithm.printPath(input2, DijkstrasAlgorithm.mothers);
+
 	}
 }
