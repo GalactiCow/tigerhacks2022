@@ -1,3 +1,4 @@
+package main;
 // A Java program for Dijkstra's
 // single source shortest path
 // algorithm. The program is for
@@ -6,14 +7,14 @@
 
 class DijkstrasAlgorithm {
 
-	private static final int NO_PARENT = -1;
+	public static final int NO_PARENT = -1;
 
 	// Function that implements Dijkstra's
 	// single source shortest path
 	// algorithm for a graph represented
 	// using adjacency matrix
 	// representation
-	private static void dijkstra(int[][] adjacencyMatrix,
+	public static void dijkstra(int[][] adjacencyMatrix,
 										int startVertex)
 	{
 		int nVertices = adjacencyMatrix.length;
@@ -104,7 +105,7 @@ class DijkstrasAlgorithm {
 	// A utility function to print
 	// the constructed distances
 	// array and shortest paths
-	private static void printSolution(int startVertex,
+	public static void printSolution(int startVertex,
 									int[] distances,
 									int[] parents)
 	{
@@ -128,7 +129,7 @@ class DijkstrasAlgorithm {
 	// Function to print shortest path
 	// from source to currentVertex
 	// using parents array
-	private static void printPath(int currentVertex,
+	public static void printPath(int currentVertex,
 								int[] parents)
 	{
 		

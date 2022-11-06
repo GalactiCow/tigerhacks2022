@@ -1,4 +1,8 @@
+package main;
 import java.util.Arrays;
+
+import main.DijkstrasAlgorithm;
+
 class listToMatrix {
     public static int[][] adjListToMatrix(int n, int[][][] adjList) {
         int[][] matrix = new int[n][n];
@@ -95,10 +99,9 @@ class listToMatrix {
             {80, 1511}
         };
         int[][][] adjList = {
-            { {0,0} }, //Indexed at 1, 0 is dummy
+                    { {1,0} }, //Indexed at 1, 0 is dummy
 
-
-            /*1. */{ {2,15},{offset+1, 1},{offset+2, 5},{offset+3, 3},{offset+4, 5},{offset+5, 15} },
+            /*1. */{ {0,0}, {2,15},{offset+1, 1},{offset+2, 5},{offset+3, 3},{offset+4, 5},{offset+5, 15} },
             /*2. */{ {1,15}, {3, 20}, {offset+18, 2}, {offset+19, 11} },
             /*3. */{ {2, 20}, {4, 10}, {15, 35}, {18, 20}, {offset+18, 18}, {offset+19, 9}, {offset+20, 7}, {offset+21, 15}, {offset+17, 7}, {offset+16, 7}, {offset+15, 17}, {offset+14, 17}, {offset+12, 32}, {offset+13, 30} },
             /*4. */{ {3, 10}, {5, 10}, {27, 30}, {offset+52, 12}, {offset+51, 20}, {offset+50, 25} },
@@ -213,6 +216,8 @@ class listToMatrix {
             /*offset+79.*/ { {23, 7}, {25, 4} },
             /*offset+80.*/ { {23, 6}, {25, 3} }
         };
-        System.out.println(Arrays.deepToString(adjListToMatrix(115, adjList)).replace("],", "],\n"));
+        //System.out.println(Arrays.deepToString(adjListToMatrix(115, adjList)).replace("],", "],\n"));
+        int[][] adjacencyMatrix = adjListToMatrix(115, adjList);
+        DijkstrasAlgorithm.dijkstra(adjacencyMatrix, 0);
 	}
 }
