@@ -147,6 +147,7 @@ class DijkstrasAlgorithm {
 		}
 		printPath(parents[currentVertex], parents);
 		int[][] classMatching = {
+			{0, 0},
             {1, 1000},
             {2, 1003},
             {3, 1004},

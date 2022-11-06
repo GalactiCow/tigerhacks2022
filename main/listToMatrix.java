@@ -18,6 +18,7 @@ class listToMatrix {
 	{
         int offset = 34;
         int[][] classMatching = {
+            {0, 0},
             {1, 1000},
             {2, 1003},
             {3, 1004},
@@ -231,11 +232,29 @@ class listToMatrix {
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("Enter a starting node: ");
                 input1 = scanner.nextInt();
+                if(input1>1000){
+                    for(int i=1; i<=80; i++)
+                    {
+                        if(classMatching[i][1] == input1) {
+                            input1 = classMatching[i][0] + offset;
+                            break;
+                        }
+                    }
+                }
                 if (input1 < 1 || input1 > 114) {
                     throw new IllegalArgumentException();
                 }
                 System.out.println("Enter an ending node: ");
                 input2 = scanner.nextInt();
+                if(input2>1000){
+                    for(int i=1; i<=80; i++)
+                    {
+                        if(classMatching[i][1] == input2) {
+                            input2 = classMatching[i][0] + offset;
+                            break;
+                        }
+                    }
+                }
                 if (input2 < 1 || input2 > 114) {
                     throw new IllegalArgumentException();
                 }
